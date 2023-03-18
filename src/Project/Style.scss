@@ -1,0 +1,56 @@
+@import './Mixens';
+
+
+
+// Primary
+
+$Linear-gradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+// (active input border)
+
+
+$Red: hsl(0, 100%, 66%);
+// (input errors)
+
+
+
+//  Neutral
+
+$White: hsl(0, 0%, 100%);
+$Light-grayish-violet: hsl(270, 3%, 87%);
+$Dark-grayish-violet: hsl(279, 6%, 55%);
+$Very-dark-violet: hsl(278, 68%, 11%);
+
+
+
+
+
+
+.project {
+    @include Position-And-Size(relative , 100% , 100vh);
+    @include Grid(grid , 400px 1fr, 1fr);
+    .linearBack {
+        @include Position-And-Size(relative , 100% , 100%);
+        background-image: url(./images/bg-main-desktop.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        .frontCard {
+            @include Position-And-Size(absolute , 447px , 245px);
+            left: 75%;
+            top: 25%;
+            transform: translate(-50% , -50%);
+            background-color: transparent;
+            img {
+                @include Position-And-Size(default , 100% , 100%);
+            }
+        }
+        .backCard {
+            @extend .frontCard;
+            top: 70%;
+            left: 90%;
+        }
+    }
+    .whiteBack {
+        @include Position-And-Size(default , 100% , 100%);
+    }
+}
