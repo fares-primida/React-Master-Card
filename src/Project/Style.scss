@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
 @import './Mixens';
 
+
+$SPACE-GROTESK: 'Space Grotesk', sans-serif;
 
 
 // Primary
@@ -28,6 +31,8 @@ $Very-dark-violet: hsl(278, 68%, 11%);
 .project {
     @include Position-And-Size(relative , 100% , 100vh);
     @include Grid(grid , 400px 1fr, 1fr);
+    font-family: $SPACE-GROTESK;
+    font-weight: 500;
     .linearBack {
         @include Position-And-Size(relative , 100% , 100%);
         background-image: url(./images/bg-main-desktop.png);
@@ -43,6 +48,41 @@ $Very-dark-violet: hsl(278, 68%, 11%);
             img {
                 @include Position-And-Size(default , 100% , 100%);
             }
+            .container {
+                @include Position-And-Size(absolute, 100% , 100%);
+                @include Grid(grid , 1fr , 60% auto auto);
+                padding: 15px;
+                .logo {
+                    padding: 5px;
+                    .container {
+                        display: flex;
+                        align-items: center;
+                        @include Position-And-Size(default , fit-content , fit-content);
+                        .Fill-Circle {
+                            @include Position-And-Size(default , 70px , 70px);
+                            border-radius: 50%;
+                            background-color: $White;
+                            margin-right: 20px;
+                        }
+                        .Out-Circle {
+                            @include Position-And-Size(default , 30px , 30px);
+                            border-radius: 50%;
+                            background-color: transparent;
+                            border: 1px solid $White;
+                        }
+                    }
+                }
+                .number {
+                    @include Center(flex , center , start);
+                    color: $White;
+                    padding: 0px 5px;
+                }
+                .name {
+                    @include Center(flex , center , space-between);
+                    padding: 0px 7px;
+                    color: $Light-grayish-violet;
+                }
+            }
         }
         .backCard {
             @extend .frontCard;
@@ -52,5 +92,41 @@ $Very-dark-violet: hsl(278, 68%, 11%);
     }
     .whiteBack {
         @include Position-And-Size(default , 100% , 100%);
+        @include Center(flex , center , center);
+        form {
+            @include Position-And-Size(default , 400px , 400px);
+            // background-color: blanchedalmond;
+            @include Center(flex , start , center);
+            flex-direction: column;
+            padding: 10px;
+            label {
+                color: #000;
+                font-weight: 400;
+            }
+            input {
+                @include Position-And-Size(default , 95% , 40px);
+                border-radius: 10px;
+                border: 1px solid #000;
+                padding: 10px;
+                font-weight: 400;
+                color: #000;
+                margin-bottom: 20px;
+            }
+            .date {
+                @include Center(flex , center , space-between);
+                padding: 0px 4px;
+            }
+            .submitBtn {
+                @include Position-And-Size(default , 100% , 45px);
+                background-color: $Very-dark-violet;
+                border-radius: 10px;
+                color: $White;
+                font-weight: 400;
+                border: none;
+                font-size: 18px;
+                letter-spacing: .5px;
+                cursor: pointer;
+            }
+        }
     }
 }
