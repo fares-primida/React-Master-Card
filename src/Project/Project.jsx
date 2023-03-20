@@ -2,26 +2,17 @@ import React from 'react'
 import Front from './images/bg-card-front.png'
 import Back from './images/bg-card-back.png'
 import './Style.scss'
-import {Validationa} from './Schema'
-import { useFormik } from 'formik'
+import { useState } from 'react'
 
 
 
 const Project = () => {
 
-        const formik = useFormik({
-            initialValues: {
-                charlodName: "",
-                cardNumber: '',
-                mM: '',
-                yY: '',
-                cVc: ''
-            } ,
-            validationSchema: Validationa,
-            onSubmit: value => {
-                alert(JSON.stringify(value , null , 2))
-            }
-        })
+        const [name , setName] = useState('')
+        const [number , setNumber] = useState(0)
+        const [mm , setMM] = useState(0)
+        const [yy , setYY] = useState(0)
+        const [cvc , setCvc] = useState(0)
 
     return (
         <div className='project'>
@@ -36,18 +27,18 @@ const Project = () => {
                         </div>
                         <div className="number">
                             <h2>
-                                0112 412 2089 1124 1220 89
+                                {number}
                             </h2>
                         </div>
                         <div className="name">
                             <div className="user">
                                 <h4>
-                                    Fares Yasser
+                                    {name}
                                 </h4>
                             </div>
                             <div className="date">
                                 <h5>
-                                    09/00
+                                    {yy} / {mm}
                                 </h5>
                             </div>
                         </div>
@@ -59,38 +50,34 @@ const Project = () => {
                 </div>
             </div>
             <div className="whiteBack">
-                <form onSubmit={formik.handleSubmit}>
+                <form>
                     <label htmlFor="name">CHARDHOLDER NAME</label>
                     <input 
                     id='name'
                     name='name'
                     type="text"
                     placeholder='Name'
-                    onChange={formik.handleChange}
-                    value={formik.values.charlodName}
-                    onBlur={formik.handleBlur}
+                    onChange={(e) => setName(e.target.value)}
                     />
                     <label htmlFor="nubmer">CARD NUBMER</label>
                     <input 
                     id='nubmer'
                     name='number'
-                    type="text"
+                    type="number"
                     placeholder='Name'
-                    onChange={formik.handleChange}
-                    value={formik.values.cardNumber}
-                    onBlur={formik.handleBlur}
+                    onChange={(e) => setNumber(e.target.value)}
+                    max={20}
                     />
                     <div className="date">
                         <div className="input-1">
                             <label htmlFor="mm">MM</label>
                             <input 
                             id='mm'
-                            type="text" 
+                            type="number" 
                             name='mm'
                             placeholder='MM'
-                            onChange={formik.handleChange}
-                            value={formik.values.mM}
-                            onBlur={formik.handleBlur}
+                            onChange={(e) => setYY(e.target.value)}
+                            maxLength={2}
                             />
                         </div>
                         <div className="input-2">
@@ -98,11 +85,10 @@ const Project = () => {
                             <input 
                             id='yy'
                             name='yy'
-                            type="text" 
+                            type="number" 
                             placeholder='YY'
-                            onChange={formik.handleChange}
-                            value={formik.values.yY}
-                            onBlur={formik.handleBlur}
+                            onChange={(e) => setMM(e.target.value)}
+                            maxLength={4}
                             />
                         </div>
                         <div className="input-3">
@@ -110,11 +96,10 @@ const Project = () => {
                             <input 
                             id='cvc'
                             name='cvc'
-                            type="text" 
+                            type="number" 
                             placeholder='CVC'
-                            onChange={formik.handleChange}
-                            value={formik.values.cVc}
-                            onBlur={formik.handleBlur}
+                            onChange={(e) => setCvc(e.target.value)}
+                            maxLength={3}
                             />
                         </div>
                     </div>
